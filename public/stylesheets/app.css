@@ -9,3 +9,6 @@ i.icon {
 #delete {
     display: inline;
 }
+body{
+	 background: linear-gradient(to bottom, #ffff99 8%, #0066cc 103%);
+}
