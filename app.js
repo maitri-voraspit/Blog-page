@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 var mongoose= require("mongoose");
 var expressSanitizer=require("express-sanitizer");
 app.use(expressSanitizer())
-mongoose.connect('mongodb://localhost:27017/blogspost', {
+var url=process.env.DATABASEURL || "mongodb://localhost:27017/blogspost"
+mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -117,6 +118,9 @@ app.delete("/blogs/:id",function(req,res){
 		}
 	})
 });
-app.listen(3000, function() { 
-  console.log('Server listening on port 3000'); 
+
+
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+  console.log("Server Has Started!");
 });
